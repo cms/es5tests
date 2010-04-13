@@ -10,7 +10,7 @@
   <h2 id="qunit-userAgent"></h2>
   <ol id="qunit-tests"></ol>
   <script type="text/javascript">
-    test("Object.getPrototypeOf (§15.2.3.2)", function() {
+    test("Object.getPrototypeOf (&sect;15.2.3.2)", function() {
       if (!Object.hasOwnProperty("getPrototypeOf"))
         throw new Error("Object.getPrototypeOf doesn't exist");
 
@@ -32,7 +32,7 @@
 
     });
 
-  test("Object.getOwnPropertyDescriptor (§15.2.3.3)", function () {
+  test("Object.getOwnPropertyDescriptor (&sect;15.2.3.3)", function () {
       if (!Object.hasOwnProperty("getOwnPropertyDescriptor"))
         throw new Error("Object.getOwnPropertyDescriptor doesn't exist");
 
@@ -52,7 +52,7 @@
     
   });
 
-    test("Object.getOwnPropertyNames (§15.2.3.4)", function() {
+    test("Object.getOwnPropertyNames (&sect;15.2.3.4)", function() {
       if (!Object.hasOwnProperty("getOwnPropertyNames"))
         throw new Error("Object.getOwnPropertyNames doesn't exist");
 
@@ -77,7 +77,7 @@
       equals( Object.getOwnPropertyNames(new String("foo")).join(), "0,1,2", "If the argument is a String instance, own properties will be the character positions" );
     });
 
-    test("Object.create (§15.2.3.5)", function() {
+    test("Object.create (&sect;15.2.3.5)", function() {
       // prerequisites
       if (!Object.hasOwnProperty("create"))
         throw new Error("Object.create doesn't exist");
@@ -128,7 +128,7 @@
       }(), "Object.create initialises object with new properties" );
     });
 
-    test("Object.defineProperty (§15.2.3.6)", function() {
+    test("Object.defineProperty (&sect;15.2.3.6)", function() {
       if (!Object.hasOwnProperty("defineProperty"))
         throw new Error("Object.defineProperty doesn't exist");
 
@@ -202,7 +202,7 @@
       }(), "Function returns the same object reference");
     });
 
-    test("Object.defineProperties (§15.2.3.7)", function () {
+    test("Object.defineProperties (&sect;15.2.3.7)", function () {
       if (!Object.hasOwnProperty("defineProperties"))
         throw new Error("Object.defineProperty doesn't exist");
 
@@ -217,7 +217,7 @@
       }(), "Throws TypeError if first argument is not an object");
     });
 
-    test("Object.seal (§15.2.3.8)", function () {
+    test("Object.seal (&sect;15.2.3.8)", function () {
       if (!Object.hasOwnProperty("seal"))
         throw new Error("Object.seal doesn't exist");
 
@@ -232,7 +232,7 @@
       }(), "Throws TypeError if argument is not an object");
     });
 
-    test("Object.freeze (§15.2.3.9)", function () {
+    test("Object.freeze (&sect;15.2.3.9)", function () {
       if (!Object.hasOwnProperty("freeze"))
         throw new Error("Object.freeze doesn't exist");
 
@@ -247,7 +247,7 @@
       }(), "Throws TypeError if argument is not an object");
     });
 
-    test("Object.preventExtensions (§15.2.3.10)", function () {
+    test("Object.preventExtensions (&sect;15.2.3.10)", function () {
       if (!Object.hasOwnProperty("preventExtensions"))
         throw new Error("Object.preventExtensions doesn't exist");
 
@@ -273,7 +273,7 @@
       }(), "Functionality test");
     });
 
-    test("Object.isSealed (§15.2.3.11)", function() {
+    test("Object.isSealed (&sect;15.2.3.11)", function() {
       if (!Object.hasOwnProperty("isSealed"))
         throw new Error("Object.isSealed doesn't exist");
       ok( typeof Object.isSealed == "function", "Is a function");
@@ -294,7 +294,7 @@
       }(),"");
     });
 
-    test("Object.isFrozen (§15.2.3.12)", function() {
+    test("Object.isFrozen (&sect;15.2.3.12)", function() {
       if (!Object.hasOwnProperty("isFrozen"))
         throw new Error("Object.isFrozen doesn't exist");
       ok( typeof Object.isFrozen == "function", "Is a function");
@@ -315,7 +315,7 @@
       }(),"");
     });
 
-    test("Object.isExtensible (§15.2.3.13)", function() {
+    test("Object.isExtensible (&sect;15.2.3.13)", function() {
       if (!Object.hasOwnProperty("isExtensible"))
         throw new Error("Object.isExtensible doesn't exist");
 
@@ -338,7 +338,7 @@
       }(),"");
     });
 
-    test("Object.keys (§15.2.3.14)", function() {
+    test("Object.keys (&sect;15.2.3.14)", function() {
       if (!Object.hasOwnProperty("keys"))
         throw new Error("Object.keys doesn't exist");
 
