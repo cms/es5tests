@@ -381,6 +381,26 @@
       equals( Object.keys([]).length, 0, "Gets only enumerable property names");
     });
 
+    test("Function.prototype.bind  (&sect;15.3.4.5)", function () {
+      if (!Function.prototype.hasOwnProperty("bind"))
+      throw new Error("Function.prototype.bind doesn't exist");
+
+      function dummy() {}
+      var bound = dummy.bind({});
+
+      ok( typeof Function.prototype.bind == "function", "Is a function");
+      equals( Function.prototype.bind.length, 1, "Function length speficied to one");
+      ok( function () {
+        try {
+        Function.prototype.bind.call({});
+        } catch (e) {
+          return e instanceof TypeError;
+        }
+      }(), "Throws TypeError when target is not callable");
+      equals( typeof bound, "function", "Returns a function object");
+      equals( bound.hasOwnProperty("prototype"), false, "Resulting function doesn't have a prototype property");
+    });
+
   </script>
 </body>
 </html>
