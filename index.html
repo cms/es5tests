@@ -11,10 +11,11 @@
   <ol id="qunit-tests"></ol>
   <script type="text/javascript">
     test("Object.getPrototypeOf (&sect;15.2.3.2)", function() {
-      if (!Object.hasOwnProperty("getPrototypeOf"))
+      if (!Object.hasOwnProperty("getPrototypeOf")) {
         throw new Error("Object.getPrototypeOf doesn't exist");
+      }
 
-      ok( typeof Object.getPrototypeOf == "function", "Is a function" );
+      ok( typeof Object.getPrototypeOf === "function", "Is a function" );
       equals( Object.getPrototypeOf.length, 1, "Function expects one argument" );
       ok( function () {
         try {
@@ -32,11 +33,12 @@
 
     });
 
-  test("Object.getOwnPropertyDescriptor (&sect;15.2.3.3)", function () {
-      if (!Object.hasOwnProperty("getOwnPropertyDescriptor"))
+    test("Object.getOwnPropertyDescriptor (&sect;15.2.3.3)", function () {
+      if (!Object.hasOwnProperty("getOwnPropertyDescriptor")) {
         throw new Error("Object.getOwnPropertyDescriptor doesn't exist");
+      }
 
-      ok( typeof Object.getOwnPropertyDescriptor == "function", "Is a function" );
+      ok( typeof Object.getOwnPropertyDescriptor === "function", "Is a function" );
       equals( Object.getOwnPropertyDescriptor.length, 2, "Function expects two arguments" );
       ok( function () {
         try {
@@ -47,25 +49,25 @@
       }(), "Throws TypeError if argument is not an object");
       ok( function () {
         var d = Object.getOwnPropertyDescriptor([], "length");
-        return !d.configurable && !d.enumerable  && d.writable;
+        return !d.configurable && !d.enumerable && d.writable;
       }(), "Gets a valid property descriptor" );
-    
-  });
+    });
 
     test("Object.getOwnPropertyNames (&sect;15.2.3.4)", function() {
-      if (!Object.hasOwnProperty("getOwnPropertyNames"))
+      if (!Object.hasOwnProperty("getOwnPropertyNames")) {
         throw new Error("Object.getOwnPropertyNames doesn't exist");
+      }
 
-      ok( typeof Object.getOwnPropertyNames == "function", "Is a function" );
+      ok( typeof Object.getOwnPropertyNames === "function", "Is a function" );
       equals( Object.getOwnPropertyNames.length, 1, "Function expects one argument" );
-      ok( function () { 
+      ok( function () {
         try {
           Object.getOwnPropertyName(0);
         } catch (e) {
           return e instanceof TypeError;
         }
       }(), "Throws TypeError if type of first argument is not Object" );
-      ok( function () { 
+      ok( function () {
         try {
           Object.getOwnPropertyName(0);
         } catch (e) {
@@ -79,12 +81,13 @@
 
     test("Object.create (&sect;15.2.3.5)", function() {
       // prerequisites
-      if (!Object.hasOwnProperty("create"))
+      if (!Object.hasOwnProperty("create")) {
         throw new Error("Object.create doesn't exist");
+      }
 
-      ok( typeof Object.create == "function", "Is a function" );
+      ok( typeof Object.create === "function", "Is a function" );
       equals( Object.create.length, 2, "Function expects two arguments" );
-      ok(function () { 
+      ok(function () {
         try {
           Object.create(0);
         } catch (e) {
@@ -92,7 +95,7 @@
         }
       }(), "Throws TypeError if type of first argument is not Object" );
 
-      ok(function () { 
+      ok(function () {
         try {
           Object.create(null);
         } catch (e) {
@@ -100,12 +103,14 @@
         }
       }(), "Throws TypeError first argument is null" );
 
-      ok(function () { 
-        if (typeof Object.getPrototypeOf != "function")
+      ok(function () {
+        if (typeof Object.getPrototypeOf != "function") {
           throw new Error("Object.getPrototypeOf is not a function");
+        }
 
-        if (typeof Object.prototype.isPrototypeOf == "undefined")
+        if (typeof Object.prototype.isPrototypeOf === "undefined") {
           throw new Error("Object.prototype.isPrototypeOf is not a function");
+        }
 
         var proto = {},
             obj = Object.create(proto);
@@ -113,7 +118,7 @@
         return Object.getPrototypeOf(obj) === proto && proto.isPrototypeOf(obj);
       }(), "Sets the right [[Prototype]]" );
 
-      ok(function () { 
+      ok(function () {
         var obj = Object.create({}, {
           x: {
             value: true
@@ -129,10 +134,11 @@
     });
 
     test("Object.defineProperty (&sect;15.2.3.6)", function() {
-      if (!Object.hasOwnProperty("defineProperty"))
+      if (!Object.hasOwnProperty("defineProperty")) {
         throw new Error("Object.defineProperty doesn't exist");
+      }
 
-      ok( typeof Object.defineProperty == "function", "Is a function");
+      ok( typeof Object.defineProperty === "function", "Is a function");
       equals( Object.defineProperty.length, 3, "Function expects three arguments");
       ok( function () {
         try {
@@ -203,10 +209,11 @@
     });
 
     test("Object.defineProperties (&sect;15.2.3.7)", function () {
-      if (!Object.hasOwnProperty("defineProperties"))
+      if (!Object.hasOwnProperty("defineProperties")) {
         throw new Error("Object.defineProperty doesn't exist");
+      }
 
-      ok( typeof Object.defineProperties == "function", "Is a function");
+      ok( typeof Object.defineProperties === "function", "Is a function");
       equals( Object.defineProperties.length, 2, "Function expects two arguments");
       ok( function () {
         try {
@@ -218,10 +225,11 @@
     });
 
     test("Object.seal (&sect;15.2.3.8)", function () {
-      if (!Object.hasOwnProperty("seal"))
+      if (!Object.hasOwnProperty("seal")) {
         throw new Error("Object.seal doesn't exist");
+      }
 
-      ok( typeof Object.seal == "function", "Is a function");
+      ok( typeof Object.seal === "function", "Is a function");
       equals( typeof Object.seal.length, 1, "Function expects one argument");
       ok( function () {
         try {
@@ -233,10 +241,11 @@
     });
 
     test("Object.freeze (&sect;15.2.3.9)", function () {
-      if (!Object.hasOwnProperty("freeze"))
+      if (!Object.hasOwnProperty("freeze")) {
         throw new Error("Object.freeze doesn't exist");
+      }
 
-      ok( typeof Object.freeze == "function", "Is a function");
+      ok( typeof Object.freeze === "function", "Is a function");
       equals( typeof Object.freeze.length, 1, "Function expects one argument");
       ok( function () {
         try {
@@ -248,10 +257,11 @@
     });
 
     test("Object.preventExtensions (&sect;15.2.3.10)", function () {
-      if (!Object.hasOwnProperty("preventExtensions"))
+      if (!Object.hasOwnProperty("preventExtensions")) {
         throw new Error("Object.preventExtensions doesn't exist");
+      }
 
-      ok( typeof Object.preventExtensions == "function", "Is a function");
+      ok( typeof Object.preventExtensions === "function", "Is a function");
       equals( typeof Object.preventExtensions.length, 1, "Function expects one argument");
       ok( function () {
         try {
@@ -267,16 +277,17 @@
         Object.preventExtensions(o);
         o.baz = "baz";
 
-        isNotExtensible  = typeof Object.isExtensible == "function" ? Object.isExtensible(o) === false
-                                                                    : typeof o.baz == "undefined";
-        return isNotExtensible; 
+        isNotExtensible = typeof Object.isExtensible === "function" ? Object.isExtensible(o) === false
+                                                                    : typeof o.baz === "undefined";
+        return isNotExtensible;
       }(), "Functionality test");
     });
 
     test("Object.isSealed (&sect;15.2.3.11)", function() {
-      if (!Object.hasOwnProperty("isSealed"))
+      if (!Object.hasOwnProperty("isSealed")) {
         throw new Error("Object.isSealed doesn't exist");
-      ok( typeof Object.isSealed == "function", "Is a function");
+      }
+      ok( typeof Object.isSealed === "function", "Is a function");
       equals( typeof Object.isSealed.length, 1, "Function expects one argument");
       ok( function () {
         try {
@@ -285,19 +296,20 @@
           return e instanceof TypeError;
         }
       }(), "Throws TypeError if argument is not an object");
-      ok( typeof Object.isSealed({}) == "boolean", "Returns a boolean result");
+      ok( typeof Object.isSealed({}) === "boolean", "Returns a boolean result");
       ok( function(){
         var obj = {};
         Object.seal( obj );
         obj.foo = "bar"; // Exception in strict mode
-        return Object.isSealed( obj ) && typeof obj.foo == 'undefined';
+        return Object.isSealed( obj ) && typeof obj.foo === 'undefined';
       }(),"");
     });
 
     test("Object.isFrozen (&sect;15.2.3.12)", function() {
-      if (!Object.hasOwnProperty("isFrozen"))
+      if (!Object.hasOwnProperty("isFrozen")) {
         throw new Error("Object.isFrozen doesn't exist");
-      ok( typeof Object.isFrozen == "function", "Is a function");
+      }
+      ok( typeof Object.isFrozen === "function", "Is a function");
       equals( typeof Object.isFrozen.length, 1, "Function expects one argument");
       ok( function () {
         try {
@@ -306,20 +318,21 @@
           return e instanceof TypeError;
         }
       }(), "Throws TypeError if argument is not an object");
-      ok( typeof Object.isFrozen({}) == "boolean", "Returns a boolean result");
+      ok( typeof Object.isFrozen({}) === "boolean", "Returns a boolean result");
       ok( function(){
         var obj = {};
         Object.freeze( obj );
         obj.foo = "bar"; // Exception in strict mode
-        return Object.isFrozen( obj ) && typeof obj.foo == 'undefined';
+        return Object.isFrozen( obj ) && typeof obj.foo === 'undefined';
       }(),"");
     });
 
     test("Object.isExtensible (&sect;15.2.3.13)", function() {
-      if (!Object.hasOwnProperty("isExtensible"))
+      if (!Object.hasOwnProperty("isExtensible")) {
         throw new Error("Object.isExtensible doesn't exist");
+      }
 
-      ok( typeof Object.isExtensible == "function", "Is a function");
+      ok( typeof Object.isExtensible === "function", "Is a function");
       equals( typeof Object.isExtensible.length, 1, "Function expects one argument");
       ok( function () {
         try {
@@ -328,21 +341,22 @@
           return e instanceof TypeError;
         }
       }(), "Throws TypeError if argument is not an object");
-      ok( typeof Object.isExtensible({}) == "boolean", "Returns a boolean result");
+      ok( typeof Object.isExtensible({}) === "boolean", "Returns a boolean result");
       // Functionality test
       ok( function(){
         var obj = {};
         Object.preventExtensions( obj );
         obj.foo = "bar"; // Exception in strict mode
-        return !Object.isExtensible( obj ) && typeof obj.foo == 'undefined';
+        return !Object.isExtensible( obj ) && typeof obj.foo === 'undefined';
       }(),"");
     });
 
     test("Object.keys (&sect;15.2.3.14)", function() {
-      if (!Object.hasOwnProperty("keys"))
+      if (!Object.hasOwnProperty("keys")) {
         throw new Error("Object.keys doesn't exist");
+      }
 
-      ok( typeof Object.keys == "function", "Is a function");
+      ok( typeof Object.keys === "function", "Is a function");
       equals( Object.keys.length, 1, "Function expects one argument");
       ok( function () {
         try {
@@ -381,14 +395,15 @@
       equals( Object.keys([]).length, 0, "Gets only enumerable property names");
     });
 
-    test("Function.prototype.bind  (&sect;15.3.4.5)", function () {
-      if (!Function.prototype.hasOwnProperty("bind"))
-      throw new Error("Function.prototype.bind doesn't exist");
+    test("Function.prototype.bind (&sect;15.3.4.5)", function () {
+      if (!Function.prototype.hasOwnProperty("bind")) {
+        throw new Error("Function.prototype.bind doesn't exist");
+      }
 
       function dummy() {}
       var bound = dummy.bind({});
 
-      ok( typeof Function.prototype.bind == "function", "Is a function");
+      ok( typeof Function.prototype.bind === "function", "Is a function");
       equals( Function.prototype.bind.length, 1, "Function length speficied to one");
       ok( function () {
         try {
