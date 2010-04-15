@@ -432,8 +432,13 @@
       equals( [].indexOf('foo'), -1, "If the target object length property is zero, return -1");
       equals( ['foo',0,'foo'].indexOf('foo', 1), 2, "fromIndex argument is used");
       equals( ['foo'].indexOf('foo', 1), -1, "If fromIndex argument greater or equal than length, return -1");
-      equals( [null].indexOf(undefined), -1, "Strict equality algorithm is used");
-      equals( Array.prototype.indexOf.call({0: 'foo', 1:'bar', length:2}, 'bar'), 1, "Can be used with array-like objects");
+      equals( [1,2,3].indexOf(2, -2), 1, "fromIndex argument with negative value");
+      ok( function () {
+        return [null].indexOf(undefined) === -1  && [""].indexOf(0) === -1 &&
+               [false].indexOf(0) === -1 && ["\n\r "].indexOf(false) === -1 &&
+               ['0'].indexOf(0) === -1 && [0].indexOf('') === -1;
+      }(), "Strict equality algorithm is used");
+      equals( Array.prototype.indexOf.call({0: 'foo', 1: 'bar', length: 2}, 'bar'), 1, "Can be used with array-like objects");
     });
 
     test("Array.prototype.lastIndexOf", function () {
@@ -445,8 +450,13 @@
       equals( Array.prototype.lastIndexOf.length, 1, "Function length speficied to one");
       equals( [].lastIndexOf('foo'), -1, "If the target object length property is zero, return -1");
       equals( ['foo',0,'foo'].lastIndexOf('foo', 1), 0, "fromIndex argument is used");
-      equals( [null].lastIndexOf(undefined), -1, "Strict equality algorithm is used");
-      equals( Array.prototype.lastIndexOf.call({0: 'bar', 1:'bar', length:2}, 'bar'), 1, "Can be used with array-like objects");
+      equals( [1,2,3].lastIndexOf(2, -2), 1, "fromIndex argument with negative value should be len - abs(n)");
+      ok( function () {
+        return [null].lastIndexOf(undefined) === -1  && [""].lastIndexOf(0) === -1 &&
+               [false].lastIndexOf(0) === -1 && ["\n\r "].lastIndexOf(false) === -1 &&
+               ['0'].lastIndexOf(0) === -1 && [0].lastIndexOf('') === -1;
+      }(), "Strict equality algorithm is used");
+      equals( Array.prototype.lastIndexOf.call({0: 'bar', 1: 'bar', length:2}, 'bar'), 1, "Can be used with array-like objects");
     });
     
   </script>
