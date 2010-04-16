@@ -18,7 +18,7 @@
       }
 
       ok( typeof Object.getPrototypeOf === "function", "Is a function" );
-      equals( Object.getPrototypeOf.length, 1, "Function expects one argument" );
+      strictEqual( Object.getPrototypeOf.length, 1, "Function expects one argument" );
       ok( function () {
         try {
         Object.getPrototypeOf(0);
@@ -41,7 +41,7 @@
       }
 
       ok( typeof Object.getOwnPropertyDescriptor === "function", "Is a function" );
-      equals( Object.getOwnPropertyDescriptor.length, 2, "Function expects two arguments" );
+      strictEqual( Object.getOwnPropertyDescriptor.length, 2, "Function expects two arguments" );
       ok( function () {
         try {
         Object.getOwnPropertyDescriptor(0, 'foo');
@@ -61,7 +61,7 @@
       }
 
       ok( typeof Object.getOwnPropertyNames === "function", "Is a function" );
-      equals( Object.getOwnPropertyNames.length, 1, "Function expects one argument" );
+      strictEqual( Object.getOwnPropertyNames.length, 1, "Function expects one argument" );
       ok( function () {
         try {
           Object.getOwnPropertyName(0);
@@ -77,8 +77,8 @@
         }
       }(), "Throws TypeError if type of first argument is not Object" );
 
-      equals( Object.getOwnPropertyNames([])[0], "length", "Gets non enumerable properties" );
-      equals( Object.getOwnPropertyNames(new String("foo")).join(), "0,1,2", "If the argument is a String instance, own properties will be the character positions" );
+      strictEqual( Object.getOwnPropertyNames([])[0], "length", "Gets non enumerable properties" );
+      strictEqual( Object.getOwnPropertyNames(new String("foo")).join(), "0,1,2", "If the argument is a String instance, own properties will be the character positions" );
     });
 
     test("Object.create (&sect;15.2.3.5)", function() {
@@ -88,7 +88,7 @@
       }
 
       ok( typeof Object.create === "function", "Is a function" );
-      equals( Object.create.length, 2, "Function expects two arguments" );
+      strictEqual( Object.create.length, 2, "Function expects two arguments" );
       ok(function () {
         try {
           Object.create(0);
@@ -141,7 +141,7 @@
       }
 
       ok( typeof Object.defineProperty === "function", "Is a function");
-      equals( Object.defineProperty.length, 3, "Function expects three arguments");
+      strictEqual( Object.defineProperty.length, 3, "Function expects three arguments");
       ok( function () {
         try {
           Object.defineProperty(0, "test", { writable: false });
@@ -216,7 +216,7 @@
       }
 
       ok( typeof Object.defineProperties === "function", "Is a function");
-      equals( Object.defineProperties.length, 2, "Function expects two arguments");
+      strictEqual( Object.defineProperties.length, 2, "Function expects two arguments");
       ok( function () {
         try {
           Object.defineProperties(0, {});
@@ -232,7 +232,7 @@
       }
 
       ok( typeof Object.seal === "function", "Is a function");
-      equals( typeof Object.seal.length, 1, "Function expects one argument");
+      strictEqual( typeof Object.seal.length, 1, "Function expects one argument");
       ok( function () {
         try {
           Object.seal(0);
@@ -248,7 +248,7 @@
       }
 
       ok( typeof Object.freeze === "function", "Is a function");
-      equals( typeof Object.freeze.length, 1, "Function expects one argument");
+      strictEqual( typeof Object.freeze.length, 1, "Function expects one argument");
       ok( function () {
         try {
           Object.freeze(0);
@@ -264,7 +264,7 @@
       }
 
       ok( typeof Object.preventExtensions === "function", "Is a function");
-      equals( typeof Object.preventExtensions.length, 1, "Function expects one argument");
+      strictEqual( typeof Object.preventExtensions.length, 1, "Function expects one argument");
       ok( function () {
         try {
           Object.preventExtensions(0);
@@ -290,7 +290,7 @@
         throw new Error("Object.isSealed doesn't exist");
       }
       ok( typeof Object.isSealed === "function", "Is a function");
-      equals( typeof Object.isSealed.length, 1, "Function expects one argument");
+      strictEqual( typeof Object.isSealed.length, 1, "Function expects one argument");
       ok( function () {
         try {
           Object.isSealed(0);
@@ -312,7 +312,7 @@
         throw new Error("Object.isFrozen doesn't exist");
       }
       ok( typeof Object.isFrozen === "function", "Is a function");
-      equals( typeof Object.isFrozen.length, 1, "Function expects one argument");
+      strictEqual( typeof Object.isFrozen.length, 1, "Function expects one argument");
       ok( function () {
         try {
           Object.isFrozen(0);
@@ -335,7 +335,7 @@
       }
 
       ok( typeof Object.isExtensible === "function", "Is a function");
-      equals( typeof Object.isExtensible.length, 1, "Function expects one argument");
+      strictEqual( typeof Object.isExtensible.length, 1, "Function expects one argument");
       ok( function () {
         try {
           Object.isExtensible(0);
@@ -359,7 +359,7 @@
       }
 
       ok( typeof Object.keys === "function", "Is a function");
-      equals( Object.keys.length, 1, "Function expects one argument");
+      strictEqual( Object.keys.length, 1, "Function expects one argument");
       ok( function () {
         try {
           Object.keys(0);
@@ -376,7 +376,7 @@
       }(), "Throws TypeError when argument is not an object");
       //
       // Functionality tests
-      equals( Object.prototype.toString.call(Object.keys({})), "[object Array]", "The method returns an array object");
+      strictEqual( Object.prototype.toString.call(Object.keys({})), "[object Array]", "The method returns an array object");
       ok( function () {
         var o = { foo: 1, bar: 2, baz: 3, 0: true},
             result = Object.keys(o), i = 0;
@@ -394,7 +394,7 @@
 
         return Object.keys(new Dummy()).length === 0;
       }(), "Gets only own properties");
-      equals( Object.keys([]).length, 0, "Gets only enumerable property names");
+      strictEqual( Object.keys([]).length, 0, "Gets only enumerable property names");
     });
 
     test("Function.prototype.bind (&sect;15.3.4.5)", function () {
@@ -406,7 +406,7 @@
       var o = {}, bound = dummy.bind(o);
 
       ok( typeof Function.prototype.bind === "function", "Is a function");
-      equals( Function.prototype.bind.length, 1, "Function length speficied to one");
+      strictEqual( Function.prototype.bind.length, 1, "Function length speficied to one");
       ok( function () {
         try {
           Function.prototype.bind.call({});
@@ -414,51 +414,51 @@
           return e instanceof TypeError;
         }
       }(), "Throws TypeError when target is not callable");
-      equals( typeof bound, "function", "Returns a function object");
-      equals( bound.hasOwnProperty("prototype"), false, "Resulting function doesn't have a prototype property");
+      strictEqual( typeof bound, "function", "Returns a function object");
+      strictEqual( bound.hasOwnProperty("prototype"), false, "Resulting function doesn't have a prototype property");
       ok( function () {
         return bound() == o;
       }(), "Sets the right this value ([[BoundThis]])");
-      equals(function () { return Array.prototype.join.call(arguments) }.bind(o,1,2)(3,4), "1,2,3,4", "Persists the new function [[BoundArgs]]");
-      equals(function (a,b,c,d) { }.bind(o,1,2).length, 2, "The resulting function length should be Target.arguments.length minus [[BoundArgs]]");
-      equals(dummy.bind(o,1,2).length, 0, "If there are more [[BoundArgs]] than Target.arguments defined, length should be zero");
+      strictEqual(function () { return Array.prototype.join.call(arguments) }.bind(o,1,2)(3,4), "1,2,3,4", "Persists the new function [[BoundArgs]]");
+      strictEqual(function (a,b,c,d) { }.bind(o,1,2).length, 2, "The resulting function length should be Target.arguments.length minus [[BoundArgs]]");
+      strictEqual(dummy.bind(o,1,2).length, 0, "If there are more [[BoundArgs]] than Target.arguments defined, length should be zero");
     });
 
-    test("Array.prototype.indexOf", function () {
+    test("Array.prototype.indexOf (&sect;15.4.4.14)", function () {
       if (!Array.prototype.hasOwnProperty("indexOf")) {
         throw new Error("Array.prototype.indexOf doesn't exist");
       }
 
       ok( typeof Array.prototype.indexOf === "function", "Is a function");
-      equals( Array.prototype.indexOf.length, 1, "Function length speficied to one");
-      equals( [].indexOf('foo'), -1, "If the target object length property is zero, return -1");
-      equals( ['foo',0,'foo'].indexOf('foo', 1), 2, "fromIndex argument is used");
-      equals( ['foo'].indexOf('foo', 1), -1, "If fromIndex argument greater or equal than length, return -1");
-      equals( [1,2,3].indexOf(2, -2), 1, "fromIndex argument with negative value");
+      strictEqual( Array.prototype.indexOf.length, 1, "Function length speficied to one");
+      strictEqual( [].indexOf('foo'), -1, "If the target object length property is zero, return -1");
+      strictEqual( ['foo',0,'foo'].indexOf('foo', 1), 2, "fromIndex argument is used");
+      strictEqual( ['foo'].indexOf('foo', 1), -1, "If fromIndex argument greater or equal than length, return -1");
+      strictEqual( [1,2,3].indexOf(2, -2), 1, "fromIndex argument with negative value");
       ok( function () {
         return [null].indexOf(undefined) === -1  && [""].indexOf(0) === -1 &&
                [false].indexOf(0) === -1 && ["\n\r "].indexOf(false) === -1 &&
                ['0'].indexOf(0) === -1 && [0].indexOf('') === -1;
       }(), "Strict equality algorithm is used");
-      equals( Array.prototype.indexOf.call({0: 'foo', 1: 'bar', length: 2}, 'bar'), 1, "Can be used with array-like objects");
+      strictEqual( Array.prototype.indexOf.call({0: 'foo', 1: 'bar', length: 2}, 'bar'), 1, "Can be used with array-like objects");
     });
 
-    test("Array.prototype.lastIndexOf", function () {
+    test("Array.prototype.lastIndexOf (&sect;15.4.4.15)", function () {
       if (!Array.prototype.hasOwnProperty("lastIndexOf")) {
         throw new Error("Array.prototype.lastIndexOf doesn't exist");
       }
 
       ok( typeof Array.prototype.lastIndexOf === "function", "Is a function");
-      equals( Array.prototype.lastIndexOf.length, 1, "Function length speficied to one");
-      equals( [].lastIndexOf('foo'), -1, "If the target object length property is zero, return -1");
-      equals( ['foo',0,'foo'].lastIndexOf('foo', 1), 0, "fromIndex argument is used");
-      equals( [1,2,3].lastIndexOf(2, -2), 1, "fromIndex argument with negative value should be len - abs(n)");
+      strictEqual( Array.prototype.lastIndexOf.length, 1, "Function length speficied to one");
+      strictEqual( [].lastIndexOf('foo'), -1, "If the target object length property is zero, return -1");
+      strictEqual( ['foo',0,'foo'].lastIndexOf('foo', 1), 0, "fromIndex argument is used");
+      strictEqual( [1,2,3].lastIndexOf(2, -2), 1, "fromIndex argument with negative value should be len - abs(n)");
       ok( function () {
         return [null].lastIndexOf(undefined) === -1  && [""].lastIndexOf(0) === -1 &&
                [false].lastIndexOf(0) === -1 && ["\n\r "].lastIndexOf(false) === -1 &&
                ['0'].lastIndexOf(0) === -1 && [0].lastIndexOf('') === -1;
       }(), "Strict equality algorithm is used");
-      equals( Array.prototype.lastIndexOf.call({0: 'bar', 1: 'bar', length:2}, 'bar'), 1, "Can be used with array-like objects");
+      strictEqual( Array.prototype.lastIndexOf.call({0: 'bar', 1: 'bar', length:2}, 'bar'), 1, "Can be used with array-like objects");
     });
     
     test("Array.prototype.every (&sect;15.4.4.16)", function () {
@@ -467,7 +467,7 @@
       }
 
       ok( typeof Array.prototype.every === "function", "Is a function");
-      equals( Array.prototype.every.length, 1, "Function length speficied to one");
+      strictEqual( Array.prototype.every.length, 1, "Function length speficied to one");
       ok( function () {
         try {
           [].every({});
@@ -521,7 +521,7 @@
       }
 
       ok( typeof Array.prototype.some === "function", "Is a function");
-      equals( Array.prototype.some.length, 1, "Function length speficied to one");
+      strictEqual( Array.prototype.some.length, 1, "Function length speficied to one");
       ok( function () {
         try {
           [].some({});
@@ -560,7 +560,7 @@
         });
       }(), "Elements that are deleted after the call to some begins and before being visited are not visited");
 
-      equal([].some(function () {}), false, "In particular, for an empty array, it returns false");
+      strictEqual([].some(function () {}), false, "In particular, for an empty array, it returns false");
       ok( function () {
         var o = {};
         return [0].some(function () { return o === this; }, o);
@@ -657,7 +657,7 @@
         return result;
       }(), "Can be used with array-like objects");
 
-      equals( Array.prototype.forEach.length, 1, "Function length speficied to one");
+      strictEqual( Array.prototype.forEach.length, 1, "Function length speficied to one");
     });
 
   </script>
