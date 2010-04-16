@@ -232,7 +232,7 @@
       }
 
       ok( typeof Object.seal === "function", "Is a function");
-      strictEqual( typeof Object.seal.length, 1, "Function expects one argument");
+      strictEqual( Object.seal.length, 1, "Function expects one argument");
       ok( function () {
         try {
           Object.seal(0);
@@ -248,7 +248,7 @@
       }
 
       ok( typeof Object.freeze === "function", "Is a function");
-      strictEqual( typeof Object.freeze.length, 1, "Function expects one argument");
+      strictEqual( Object.freeze.length, 1, "Function expects one argument");
       ok( function () {
         try {
           Object.freeze(0);
@@ -264,7 +264,7 @@
       }
 
       ok( typeof Object.preventExtensions === "function", "Is a function");
-      strictEqual( typeof Object.preventExtensions.length, 1, "Function expects one argument");
+      strictEqual( Object.preventExtensions.length, 1, "Function expects one argument");
       ok( function () {
         try {
           Object.preventExtensions(0);
@@ -290,7 +290,7 @@
         throw new Error("Object.isSealed doesn't exist");
       }
       ok( typeof Object.isSealed === "function", "Is a function");
-      strictEqual( typeof Object.isSealed.length, 1, "Function expects one argument");
+      strictEqual( Object.isSealed.length, 1, "Function expects one argument");
       ok( function () {
         try {
           Object.isSealed(0);
@@ -312,7 +312,7 @@
         throw new Error("Object.isFrozen doesn't exist");
       }
       ok( typeof Object.isFrozen === "function", "Is a function");
-      strictEqual( typeof Object.isFrozen.length, 1, "Function expects one argument");
+      strictEqual( Object.isFrozen.length, 1, "Function expects one argument");
       ok( function () {
         try {
           Object.isFrozen(0);
@@ -335,7 +335,7 @@
       }
 
       ok( typeof Object.isExtensible === "function", "Is a function");
-      strictEqual( typeof Object.isExtensible.length, 1, "Function expects one argument");
+      strictEqual( Object.isExtensible.length, 1, "Function expects one argument");
       ok( function () {
         try {
           Object.isExtensible(0);
