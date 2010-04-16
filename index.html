@@ -459,7 +459,7 @@
       equals( Array.prototype.lastIndexOf.call({0: 'bar', 1: 'bar', length:2}, 'bar'), 1, "Can be used with array-like objects");
     });
     
-    test("Array.prototype.every", function () {
+    test("Array.prototype.every (&sect;15.4.4.16)", function () {
       if (!Array.prototype.hasOwnProperty("every")) {
         throw new Error("Array.prototype.every doesn't exist");
       }
@@ -513,7 +513,7 @@
       ok( Array.prototype.every.call({0: 1, 1: 2, length: 2}, function (val) { return val > 0;}), "Can be used with array-like objects");
     });
 
-    test("Array.prototype.some", function () {
+    test("Array.prototype.some (&sect;15.4.4.17)", function () {
       if (!Array.prototype.hasOwnProperty("some")) {
         throw new Error("Array.prototype.some doesn't exist");
       }
