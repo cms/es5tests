@@ -480,7 +480,7 @@
         arr[10] = 'foo'; // only one element with the index 10, length is now 11
         return arr.every(function (val, index) { return index === 10 && val === "foo";});
       }(), "callbackfn is called only for elements of the array which actually exist; it is not called for missing elements of the array");
-      ok( ['foo'].every(function () { return this === undefined;}), "If thisArg is not provided, undefined is used instead");
+      ok( ['foo'].every(function () { return this === undefined;}), "If thisArg is not provided, undefined is used instead as this value of callbackfn");
       ok( function () {
         var arr = [1,2,3];
         return arr.every(function (val, index) {
@@ -534,7 +534,7 @@
         arr[10] = 'foo'; // only one element with the index 10, length is now 11
         return arr.some(function (val, index) { return index === 10 && val === "foo";});
       }(), "callbackfn is called only for elements of the array which actually exist; it is not called for missing elements of the array");
-      ok( ['foo'].some(function () { return this === undefined;}), "If thisArg is not provided, undefined is used instead");
+      ok( ['foo'].some(function () { return this === undefined;}), "If thisArg is not provided, undefined is used instead as this value of callbackfn");
       ok( function () {
         var arr = [1,2,3];
         return !arr.some(function (val, index) {
@@ -560,13 +560,104 @@
         });
       }(), "Elements that are deleted after the call to some begins and before being visited are not visited");
 
-
       equal([].some(function () {}), false, "In particular, for an empty array, it returns false");
       ok( function () {
         var o = {};
         return [0].some(function () { return o === this; }, o);
       }(), "The thisArg argument is set as this value of callbackfn");
       ok( Array.prototype.some.call({0: 1, 1: 2, length: 2}, function (val) { return val === 2;}), "Can be used with array-like objects");
+    });
+
+    test("Array.prototype.forEach (&sect;15.4.4.18)", function () {
+      if (!Array.prototype.hasOwnProperty("forEach")) {
+        throw new Error("Array.prototype.forEach doesn't exist");
+      }
+
+      ok( typeof Array.prototype.forEach === "function", "Is a function");
+
+      ok(function () {
+        var arr = [1,2,3], indexes = [];
+
+        arr.forEach(function (val, index) {
+          indexes.push(index);
+        });
+
+        return indexes.join() === "0,1,2";
+      }(), "callbackfn is invoked once for each element present in the array, in ascending order.");
+
+      ok( function () {
+        var arr = [], result;
+        arr[10] = 'foo'; // only one element with the index 10, length is now 11
+        arr.forEach(function (val, index) { result = val === 'foo' && index === 10; });
+        return result;
+      }(), "callbackfn is called only for elements of the array which actually exist; it is not called for missing elements of the array");
+
+      ok( function () {
+        var thisArg;
+
+        ['foo'].forEach(function () { thisArg = this; });
+        return thisArg === undefined;
+      }(), "If thisArg is not provided, undefined is used instead as this value of callbackfn");
+
+      ok( function () {
+        var arr = ['foo'], result;
+
+        arr.forEach(function (val, index, o) {
+          result = val === 'foo' && index === 0 && o === arr;
+        });
+        return result;
+      }(), "callbackfn is called with three arguments: the value of the element, the index of the element, and the object being traversed");
+
+      ok( function () {
+        var arr = [1,2,3], lastValue;
+        arr.forEach(function (val, index) {
+          if (index === 0) { arr.push(4); } 
+          lastValue = val;
+        });
+        return lastValue === 3;
+      }(),"Elements which are appended to the array after the call to forEach begins will not be visited by callbackfn");
+
+      ok( function () {
+        var arr = [1,2,3], result, n = arr.length - 1;
+
+        arr.forEach(function (val, index) {
+          if (index === 0) { arr[n] = 'foo'; } // change the last item value on the first call
+          if (index === n) { result = arr[n] === 'foo'; } // verify the change on the last call
+        });
+        return result;
+      }(), "If existing elements of the array are changed, their value as passed to callbackfn will be the value at the time forEach visits them");
+
+      ok( function () {
+        var arr = [1,2,3], result = true;
+
+        arr.forEach(function (val, index) {
+          if (index === 0) { delete arr[1]; } // delete index 1 on first call
+          if (index === 1) { result = false; } // index 1 shouldn't be visited
+        });
+        return result;
+      }(), "Elements that are deleted after the call to forEach begins and before being visited are not visited");
+
+      ok( function () {
+        try {
+          [].forEach({});
+        } catch (e) {
+          return e instanceof TypeError;
+        }
+      }(), "Throws TypeError when callbackfn is not callable");
+
+      ok( function () {
+        var o = {}, result;
+        [0].forEach(function () { result = this === o; }, o);
+        return result;
+      }(), "The thisArg argument is set as this value of callbackfn");
+
+      ok( function () {
+        var result;
+        Array.prototype.forEach.call({0: 1, length: 1}, function (val, index) { result = (val == 1 && index == 0);})
+        return result;
+      }(), "Can be used with array-like objects");
+
+      equals( Array.prototype.forEach.length, 1, "Function length speficied to one");
     });
 
   </script>
