@@ -59,7 +59,6 @@ test("Array.prototype.every (&sect;15.4.4.16)", function () {
     arr[10] = 'foo'; // only one element with the index 10, length is now 11
     return arr.every(function (val, index) { return index === 10 && val === "foo";});
   }(), "callbackfn is called only for elements of the array which actually exist; it is not called for missing elements of the array");
-  ok( ['foo'].every(function () { return this === undefined;}), "If thisArg is not provided, undefined is used instead as this value of callbackfn");
   ok( function () {
     var arr = [1,2,3];
     return arr.every(function (val, index) {
@@ -113,7 +112,6 @@ test("Array.prototype.some (&sect;15.4.4.17)", function () {
     arr[10] = 'foo'; // only one element with the index 10, length is now 11
     return arr.some(function (val, index) { return index === 10 && val === "foo";});
   }(), "callbackfn is called only for elements of the array which actually exist; it is not called for missing elements of the array");
-  ok( ['foo'].some(function () { return this === undefined;}), "If thisArg is not provided, undefined is used instead as this value of callbackfn");
   ok( function () {
     var arr = [1,2,3];
     return !arr.some(function (val, index) {
@@ -170,13 +168,6 @@ test("Array.prototype.forEach (&sect;15.4.4.18)", function () {
     arr.forEach(function (val, index) { result = val === 'foo' && index === 10; });
     return result;
   }(), "callbackfn is called only for elements of the array which actually exist; it is not called for missing elements of the array");
-
-  ok( function () {
-    var thisArg;
-
-    ['foo'].forEach(function () { thisArg = this; });
-    return thisArg === undefined;
-  }(), "If thisArg is not provided, undefined is used instead as this value of callbackfn");
 
   ok( function () {
     var arr = ['foo'], result;
